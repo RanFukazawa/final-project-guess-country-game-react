@@ -1,0 +1,35 @@
+/* Country Item Styles */
+.country-item-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.country-flag {
+  width: 48px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.country-name {
+  margin: 0;
+}
+
+.country-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.country-details {
+  margin: 0;
+  flex: 1;
+}
+
+.country-actions {
+  display: flex;
+  gap: 8px;
+}

@@ -22,10 +22,6 @@ export default function AdminPanel() {
 
         const data = await res.json();
         console.log("✅ Fetched data:", data);
-
-        // const uniqueCountries = data.filter((country, index, self) => 
-        //   index === self.findIndex((c) => c.country_name === country.country_name)
-        // );
         setCountries(data.data);
       } catch (err) {
         console.log("❌ Failed to fetch countries list:", err);
@@ -49,8 +45,8 @@ export default function AdminPanel() {
 
   console.log("📋 Render CountryList", countries);
   return (
-    <div>
-      <h1>Admin Panel</h1>
+    <div class-name="admin-page">
+      <h1>Admin Panel - Manage Countries</h1>
       <input 
         type="text"
         placeholder="Search countries..."

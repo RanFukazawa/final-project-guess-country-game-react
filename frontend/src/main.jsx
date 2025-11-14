@@ -2,10 +2,10 @@ import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import "./index.css"
 
-import AdminPanel from "./components/Admin/AdminPanel.jsx";
+import AdminPage from "./pages/AdminPage.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AdminPanel />
+    <AdminPage />
   </StrictMode>,
 )
