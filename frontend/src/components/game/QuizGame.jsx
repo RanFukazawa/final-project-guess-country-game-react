@@ -129,7 +129,7 @@ export default function QuizGame() {
   // Play game - show question
   return (
     <div className="quiz-game">
-      <ScoreDisplay correct={score} total={questionNumber - 1} />
+      <ScoreDisplay correct={score} totalQuestions={TOTAL_QUESTIONS} />
 
       <QuestionDisplay 
         flagUrl={currentCountry?.flagUrl}
