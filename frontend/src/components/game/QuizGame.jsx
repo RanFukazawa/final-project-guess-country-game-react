@@ -64,7 +64,7 @@ export default function QuizGame() {
         setScore(score + 1);
       }
 
-      // Wait 2 seconds and move to the next question or end the game
+      // Wait 1 seconds and move to the next question or end the game
       setTimeout(() => {
         setShowFeedback(false);
         setAnswersDisabled(false);
@@ -77,7 +77,7 @@ export default function QuizGame() {
           setQuestionNumber(questionNumber + 1);
           fetchQuestion();
         }
-      }, 2000);
+      }, 1000);
     } catch (err) {
       console.error("Error checking answer:", err);
       setError("Failed to check answer. Please try again.");
