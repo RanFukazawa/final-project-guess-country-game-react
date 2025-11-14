@@ -4,7 +4,8 @@
 Guess Country Game is an interactive educational web application that helps users learn world geography through a flag-based quiz game. Players test their knowledge by identifying countries from their flags, while administrators can manage the country database through a comprehensive CRUD interface. The application combines an engaging game experience with robust content management capabilities.
 
 ## Screenshot
-<img width="1463" height="808" alt="A thumbnail of Guess Country Game App" src="https://raw.githubusercontent.com/RanFukazawa/project3-guess-country-game-react/project3_thumbnail.png" />
+<img width="1463" height="808" alt="A thumbnail of Guess Country Game App (home screen)" src="https://raw.githubusercontent.com/RanFukazawa/project3-guess-country-game-react/main/project3_thumbnail_1.png" />
+<img width="1463" height="808" alt="A thumbnail of Guess Country Game App (game screen)" src="https://raw.githubusercontent.com/RanFukazawa/project3-guess-country-game-react/main/project3_thumbnail_2.png" />
 
 
 ## Tech Requirements
@@ -104,7 +105,7 @@ Guess Country Game is an interactive educational web application that helps user
         - **Runtime**: Node
         - **Build Command**:
         ```bash
-            cd frontend && npm install --include=dev && npm run build && cd ../backend && npm install
+        cd frontend && npm install --include=dev && npm run build && cd ../backend && npm install
         ```
         - **Start Command**:
         ```bash
