@@ -1,9 +1,11 @@
 // Admin page
 import { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext.jsx";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -15,6 +17,10 @@ export default function AdminPage() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [editingCountry, setEditingCountry] = useState(null);
+  const [resetForm, setResetForm] = useState(0);
+
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchCountries();
@@ -92,6 +98,7 @@ export default function AdminPage() {
 
       await fetchCountries(); // Refresh list
       setEditingCountry(null); // Clear editing state
+      setResetForm(prev => prev + 1); // Increment to trigger reset
       alert(editingCountry ? "Country updated!" : "Country added!");
     } catch (err) {
       console.error("❌ Error:", err);
@@ -103,27 +110,43 @@ export default function AdminPage() {
     setEditingCountry(null);
   };
 
+  const handleLogout = async () => {
+    const result = await logout();
+    if (result.success) {
+      navigate("/login");
+    }
+  };
+
   if (loading) return <Container><p>Loading countries...</p></Container>;
   if (error) return <Container><p>Error: {error}</p></Container>;
 
   return (
     <Container>
       <div className="admin-page">
-        <h1>Admin Panel - Manage Countries</h1>
-          <Row>
-            <Col md={8} xs={12}>
-              <CountryList 
-                countries={countries} 
-                onEdit={handleEdit} 
-                onDelete={handleDelete} />
-            </Col>
-            <Col md={4} xs={12}>
-              <CountryForm 
-                onSubmit={handleSubmit} 
-                editingCountry={editingCountry} 
-                onCancel={handleCancelEdit} />
-            </Col>
-          </Row>
+        <div className="d-flex justify-content-between align-items-center mb-4">
+          <h1>Admin Panel - Manage Countries</h1>
+          <div>
+            <span className="me-3">Welcome, {user?.name}!</span>
+            <Button variant="outline-danger" onClick={handleLogout}>
+              Logout
+            </Button>
+          </div>
+        </div>
+        <Row>
+          <Col md={8} xs={12}>
+            <CountryList 
+              countries={countries} 
+              onEdit={handleEdit} 
+              onDelete={handleDelete} />
+          </Col>
+          <Col md={4} xs={12}>
+            <CountryForm 
+              onSubmit={handleSubmit} 
+              editingCountry={editingCountry} 
+              onCancel={handleCancelEdit}
+              resetForm={resetForm} />
+          </Col>
+        </Row>
       </div>  
     </Container>
   )

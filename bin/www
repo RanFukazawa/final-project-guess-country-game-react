@@ -8,7 +8,7 @@ import app from "../backend/server.js";
 import debugConstructor from "debug";
 import http from "http";
 
-const debug = debugConstructor("project3-guess-country-game-react:server");
+const debug = debugConstructor("final-project-guess-country-game-react:server");
 
 /**
  * Get port from environment and store in Express.

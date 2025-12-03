@@ -1,4 +1,4 @@
-# Project3: Guess Country Game
+# Final Project: Guess Country Game (Extended ver.)
 
 ## Project Objective
 Guess Country Game is an interactive educational web application that helps users learn world geography through a flag-based quiz game. Players test their knowledge by identifying countries from their flags, while administrators can manage the country database through a comprehensive CRUD interface. The application combines an engaging game experience with robust content management capabilities.

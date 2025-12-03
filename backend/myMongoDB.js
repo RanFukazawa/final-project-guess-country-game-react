@@ -26,47 +26,16 @@ async function connect() {
 export default function MyMongoDB() {
   const me = {};
 
-  // Functions for CRUD operations
-  me.getCountriesTotalPages = async ({
-    query,
-    limit,
-    collection = "adminCountries", // Default to admin-created data
-  }) => {
-    const { db } = await connect();
-    const countries = db.collection(collection);
-    const totalDocs = await countries.countDocuments(query);
-    return Math.ceil(totalDocs / limit);
-  };
-
   me.getAllCountries = async ({
     query = {},
-    page = 1,
     collection = "adminCountries", // Default to admin-created data
   }) => {
-    const limit = 20;
     const { db } = await connect();
-
     const countriesCollection = db.collection(collection);
 
-    const totalPages = await me.getCountriesTotalPages({
-      query,
-      limit,
-      collection,
-    });
+    const data = await countriesCollection.find(query).toArray();
 
-    if (totalPages === 0) {
-      return { data: [], totalPages: 0, page: 1 };
-    }
-
-    page = Math.min(Math.max(page, 1), totalPages);
-
-    const data = await countriesCollection
-      .find(query)
-      .limit(limit)
-      .skip((page - 1) * limit)
-      .toArray();
-
-    return { data, totalPages, page };
+    return { data };
   };
 
   me.getAdminCountryById = async (countryId) => {

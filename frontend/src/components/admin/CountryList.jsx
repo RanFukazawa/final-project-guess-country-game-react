@@ -12,7 +12,12 @@ export default function CountryList({ countries = [], onEdit, onDelete }) {
     )
   }
 
-  const listCountries = countries.map(country => (
+  // Create a sorted copy
+  const sortedCountries = [...countries].sort((a, b) => 
+    a.name.localeCompare(b.name)
+  );
+
+  const listCountries = sortedCountries.map(country => (
     <CountryItem 
       key={country._id}
       country={country}

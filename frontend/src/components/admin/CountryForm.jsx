@@ -8,7 +8,7 @@ import Row from "react-bootstrap/Row";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function CountryForm({ onSubmit, editingCountry = null, onCancel }) {
+export default function CountryForm({ onSubmit, editingCountry = null, onCancel, resetForm }) {
   const [formData, setFormData] = useState({
     name: "",
     capitals: "",
@@ -19,6 +19,7 @@ export default function CountryForm({ onSubmit, editingCountry = null, onCancel 
     countryCode: "",
   });
 
+  // Handles loading edit data and clearing on cancel
   useEffect(() => {
     if (editingCountry) {
       const cleanFlagUrl = editingCountry.flagUrl?.includes("undefined") ? "" : (editingCountry.flagUrl || "");
@@ -33,7 +34,7 @@ export default function CountryForm({ onSubmit, editingCountry = null, onCancel 
         countryCode: editingCountry.countryCode || "",
       });
     } else {
-      // Reset form when not editing
+      // Clear form when cancelled
       setFormData({
         name: "",
         capitals: "",
@@ -45,6 +46,21 @@ export default function CountryForm({ onSubmit, editingCountry = null, onCancel 
       });
     }
   }, [editingCountry]);
+
+  // Handles clearing after successful submission
+  useEffect(() => {
+    if (resetForm > 0) {
+      setFormData({
+        name: "",
+        capitals: "",
+        population: "",
+        region: "",
+        languages: "",
+        flagUrl: "",
+        countryCode: "",
+      });
+    }
+  }, [resetForm]);
 
   const handleChange= (e) => {
     const {id, value} = e.target;

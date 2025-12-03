@@ -1,19 +1,22 @@
 {
-  "name": "project3-guess-country-game-react",
+  "name": "final-project-guess-country-game-react",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node ../bin/www",
-    "dev": "node --watch ../bin/www"
+    "start": "node server.js",
+    "dev": "node --watch server.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^17.2.3",
     "express": "~4.16.1",
+    "express-session": "^1.18.2",
     "mongodb": "^7.0.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
