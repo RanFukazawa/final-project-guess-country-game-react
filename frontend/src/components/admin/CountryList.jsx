@@ -1,5 +1,6 @@
 import CountryItem from "./CountryItem.jsx";
 
+import ListGroup from "react-bootstrap/ListGroup";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // List all countries
@@ -28,8 +29,8 @@ export default function CountryList({ countries = [], onEdit, onDelete }) {
   )
 
   return (
-    <div className="country-list">
-      <ul>{listCountries}</ul>
-    </div>
+    <ListGroup>
+      {listCountries}
+    </ListGroup>  
   );
 }

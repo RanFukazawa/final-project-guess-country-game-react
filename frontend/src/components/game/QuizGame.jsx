@@ -64,7 +64,11 @@ export default function QuizGame() {
         setScore(score + 1);
       }
 
-      // Wait 1.5 seconds and move to the next question or end the game
+      const delay = result.correct ? 1300 : 2000;
+
+      // Wait 1.3 seconds for correct answer and
+      // 2 seconds for incorrect answer and 
+      // move to the next question or end the game
       setTimeout(() => {
         setShowFeedback(false);
         setAnswersDisabled(false);
@@ -77,7 +81,7 @@ export default function QuizGame() {
           setQuestionNumber(questionNumber + 1);
           fetchQuestion();
         }
-      }, 1500);
+      }, delay);
     } catch (err) {
       console.error("Error checking answer:", err);
       setError("Failed to check answer. Please try again.");
