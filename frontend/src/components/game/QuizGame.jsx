@@ -17,6 +17,7 @@ export default function QuizGame() {
   const [gameStatus, setGameStatus] = useState("playing");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  // const [record, setRecord] = useState([])
 
   // Feedback state
   const [showFeedback, setShowFeedback] = useState(false);
@@ -64,6 +65,10 @@ export default function QuizGame() {
         setScore(score + 1);
       }
 
+      // const userRecord = (newRecord) => {
+      //   setRecord(prevRecord => [...prevRecord, newRecord])
+      // }
+
       const delay = result.correct ? 1300 : 2000;
 
       // Wait 1.3 seconds for correct answer and
@@ -98,6 +103,7 @@ export default function QuizGame() {
     setIsCorrect(false);
     setCorrectAnswer("");
     setAnswersDisabled(false);
+    // setRecord([]);
     fetchQuestion();
   };
 
@@ -125,7 +131,8 @@ export default function QuizGame() {
       <ResultsScreen
         score={score}
         totalQuestions={TOTAL_QUESTIONS}
-        onPlayAgain={handlePlayAgain} 
+        onPlayAgain={handlePlayAgain}
+        // userRecord={record}
       />
     );
   }
